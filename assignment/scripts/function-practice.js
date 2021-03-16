@@ -105,8 +105,22 @@ console.log('Calling sumAll with array1 (a1) from before:', sumAll(a1));
 // 10. Function to return a new array of all positive (greater than zero)
 //     numbers contained in an input array. If there are no positive numbers
 //     return an empty array. Note: The input array should not change.
+let a3 = [1,-2,3,-4,5,-6];
+let a4 = [-1,-2,-3,-4,-5,-6];
 
+function positiveElements(array) {
+  let positiveArray = [];
+  for (element of array){
+    if (element>0){
+      positiveArray.push(element);
+    }
+  }
+  return positiveArray;
+}
 
+console.log('Calling positiveElements for an all positive array:', positiveElements(a1));
+console.log('Calling positiveElements for a half positive array:', positiveElements(a3));
+console.log('Calling positiveElements for an all negative array:', positiveElements(a4));
 
 // 11. Pick a problem from Edabit(https://edabit.com/) or
 //     CodeWars(https://www.codewars.com/). Then describe it
