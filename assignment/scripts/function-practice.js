@@ -144,13 +144,89 @@ const tetrahedralNumber = n => {
   //  console.log('in loop 1', h);
     for (let l=h; l>0; l--){
   //    console.log('in loop 2', l);
-  // Used these bits of commented out code to test that the loops were behaving as I wanted to.
+  // Used these bits of commented out code to test that the loops were behaving as expected.
       t=t+l;
     }
   }
   return t;
 }
 
-console.log('should be 4:',tetrahedralNumber(2));
-console.log('should be 35:',tetrahedralNumber(5));
-console.log('should be 56:',tetrahedralNumber(6));
+console.log('Testing tetrahedralNumber with 2, should be 4:', tetrahedralNumber(2));
+console.log('Testing tetrahedralNumber with 5, should be 35:', tetrahedralNumber(5));
+console.log('Testing tetrahedralNumber with 6, should be 56:', tetrahedralNumber(6));
+
+// The .length property on an array will return the number of elements in the array.
+// For example, the array below contains 2 elements: [1, [2, 3]]
+// Suppose we instead wanted to know the total number of non-nested items in the nested array.
+// In the above case, [1, [2, 3]] contains 3 non-nested items, 1, 2 and 3.
+// Write a function that returns the total number of non-nested items in a nested array.
+// https://edabit.com/challenge/yXSTvCNen2DQHyrh6
+
+
+// ATTEMPT 1
+// function getLength(nestedArray) {
+//   for (part of nestedArray) {
+//     console.log(part);
+//     if (part.length !== undefined){
+//       return 1;
+//     } else {
+//       getLength(part);
+//     }
+//   }
+//   return length;
+// }
+
+
+// FAILED ATTEMPT 2
+// function getLength(nestedArray, length) {
+//   if (nestedArray === []){
+//     return 0;
+//   }
+//
+//   for (part of nestedArray){
+//     console.log('current part:', part, 'current length:', length);
+//     if (part.length !== undefined){
+//       return getLengthgetLength(part,length);
+//     } else if (part.length === undefined) {
+//       length ++;
+//       console.log('increasing length');
+//     }
+//   }
+//
+//   return length;
+// }
+
+
+// FAILED ATTEMPT 3
+// let length = 0;
+// function getLength(nestedArray, length) {
+//   for (part of nestedArray){
+//     console.log('current part:',part, 'current length', length);
+//     if (part.length !== undefined){
+//       console.log('running recursion with part', part, 'and current length', length);
+//       getLength(part, length);
+//     }
+//     length++;
+//     console.log('increasing length');
+//   }
+//   return length;
+// }
+
+function getLength(nestedArray) {
+  let length = 0;
+  for (part of nestedArray){
+    if (part.length !== undefined){
+      length += getLength(part);
+    } else{
+      length++;
+    }
+  }
+  return length;
+}
+
+let a5 = [1,[2,3]];
+let a6 = [1,[2,[3,4]]];
+let a7 = [[1,2,3],4,[[[5,6],7],8]]
+console.log('Testing getLength of a5, should be 3', getLength(a5));
+console.log('Testing getLength of a6, should be 4', getLength(a6));
+console.log('Testing getLength of a7, should be 8', getLength(a7));
