@@ -60,9 +60,10 @@ function getLast( array ) {
     return array[array.length -1];
   }
 }
-
-console.log('Calling an array with elements, with last item, 5:', getLast(a1));
-console.log('Calling an empty array:', getLast(a2));
+console.log('a1:',a1);
+console.log('a2:',a2);
+console.log('Calling an array with elements, (a1) with last item 5:', getLast(a1));
+console.log('Calling an empty array, (a2) should say undefined:', getLast(a2));
 
 // 7. Function to find a value in an array. Return true if the
 //    value is found and false otherwise. Use a loop;
@@ -75,8 +76,8 @@ function find( value, array ){
   } return false;
 }
 
-console.log('Looking for 3 in array1 (a1):', find(3,a1));
-console.log('Looking for 3 in array2 (a2):', find(3,a2));
+console.log('Looking for 3 in array1 (a1) - should say true:', find(3,a1));
+console.log('Looking for 3 in array2 (a2) - should say false:', find(3,a2));
 
 // ----------------------
 // Stretch Goals
@@ -88,8 +89,8 @@ function isFirstLetter(letter, string) {
     return true;
   } return false;
 }
-console.log( 'isFirstLetter - should say true', isFirstLetter('a', 'apple') );
-console.log( 'isFirstLetter - should say false', isFirstLetter('z', 'apple') );
+console.log( 'isFirstLetter - should say true:', isFirstLetter('a', 'apple') );
+console.log( 'isFirstLetter - should say false:', isFirstLetter('z', 'apple') );
 
 // 9. Function to return the sum of all numbers in an array
 function sumAll(array) {
@@ -118,10 +119,38 @@ function positiveElements(array) {
   return positiveArray;
 }
 
-console.log('Calling positiveElements for an all positive array:', positiveElements(a1));
-console.log('Calling positiveElements for a half positive array:', positiveElements(a3));
-console.log('Calling positiveElements for an all negative array:', positiveElements(a4));
+console.log('a3:',a3);
+console.log('a4:',a4);
+console.log('Calling positiveElements for an all positive array (a1):', positiveElements(a1));
+console.log('Calling positiveElements for a half positive array (a3):', positiveElements(a3));
+console.log('Calling positiveElements for an all negative array (a4):', positiveElements(a4));
 
 // 11. Pick a problem from Edabit(https://edabit.com/) or
 //     CodeWars(https://www.codewars.com/). Then describe it
 //     here in a comment, write the function, and test it!
+//
+// Find the nth Tetrahedral Number
+// A tetrahedron is a pyramid with a triangular base and three sides.
+// A tetrahedral number is a number of items within a tetrahedron.
+// Create a function that takes an integer n and returns the nth tetrahedral number.
+// https://edabit.com/challenge/zRCyxKBBmr4F2x4Bv
+
+const tetrahedralNumber = n => {
+  let t = 0;
+  if (n<=0) {
+    return null;
+  }
+  for (let h=n; h>0; h--) {
+  //  console.log('in loop 1', h);
+    for (let l=h; l>0; l--){
+  //    console.log('in loop 2', l);
+  // Used these bits of commented out code to test that the loops were behaving as I wanted to.
+      t=t+l;
+    }
+  }
+  return t;
+}
+
+console.log('should be 4:',tetrahedralNumber(2));
+console.log('should be 35:',tetrahedralNumber(5));
+console.log('should be 56:',tetrahedralNumber(6));
