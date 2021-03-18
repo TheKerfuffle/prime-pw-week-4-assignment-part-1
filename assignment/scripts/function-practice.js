@@ -5,21 +5,27 @@ console.log('***** Function Practice *****')
 // to test it and display the result
 
 // 1. Function to return 'Hello World!'
+
 function hello() {
   return 'Hello World!';
 }
+
 // Call the function to test
+
 console.log('Test - should say "Hello World!"', hello());
 
-
 // 2. Function to return an personalized hello, for example 'Hello, Jo!'
+
 function helloName( name ) {
   return `Hello, ${name}!`;
 }
+
 // Remember to call the function to test
+
 console.log(helloName('Chuckles'));
 
 // 3. Function to add two numbers together & return the result
+
 function addNumbers( firstNumber , secondNumber) {
   return firstNumber + secondNumber;
 }
@@ -27,6 +33,7 @@ function addNumbers( firstNumber , secondNumber) {
 console.log('Calling addNumbers with 2 and 3:', addNumbers(2,3));
 
 // 4. Function to multiply three numbers & return the result
+
 function multiplyThree(num1,num2,num3){
   return num1*num2*num3;
 }
@@ -35,6 +42,7 @@ console.log('Calling multiplyThree with 3, 4 and 5:', multiplyThree(3,4,5));
 
 // 5. Function that will return true if a number is positive,
 //    or greater than zero, and false otherwise
+
 function isPositive( number ) {
   if ( number > 0 ){
     return true;
@@ -44,13 +52,14 @@ function isPositive( number ) {
 
 // Call the function to test each outcome (true & false)
 // Write a separate console.log statement for each outcome
+
 console.log( 'isPositive - should say true', isPositive(3) );
 console.log( 'isPositive - should say false', isPositive(0) );
 console.log( 'isPositive - should say false', isPositive(-3) );
 
-
 // 6. Function to return the _last_ item in an array. If the
 //    array is empty, return `undefined`.
+
 let a1 = [1,2,3,4,5];
 let a2 = [];
 function getLast( array ) {
@@ -60,6 +69,7 @@ function getLast( array ) {
     return array[array.length -1];
   }
 }
+
 console.log('a1:',a1);
 console.log('a2:',a2);
 console.log('Calling an array with elements, (a1) with last item 5:', getLast(a1));
@@ -68,8 +78,9 @@ console.log('Calling an empty array, (a2) should say undefined:', getLast(a2));
 // 7. Function to find a value in an array. Return true if the
 //    value is found and false otherwise. Use a loop;
 //    DO NOT use Array.includes, Array.indexOf, or Array.find
+
 function find( value, array ){
-  for (element of array) {
+  for (let element of array) {
     if (element === value) {
       return true;
     }
@@ -84,18 +95,21 @@ console.log('Looking for 3 in array2 (a2) - should say false:', find(3,a2));
 // ----------------------
 // 8. Function to check if a letter is the first letter in a
 //    string. Return true if it is, and false otherwise
+
 function isFirstLetter(letter, string) {
   if (string.indexOf(letter) === 0) {
     return true;
   } return false;
 }
+
 console.log( 'isFirstLetter - should say true:', isFirstLetter('a', 'apple') );
 console.log( 'isFirstLetter - should say false:', isFirstLetter('z', 'apple') );
 
 // 9. Function to return the sum of all numbers in an array
+
 function sumAll(array) {
   let sum = 0;
-  for (element of array){
+  for (let element of array){
     sum = sum + element;
   }
   return sum;
@@ -106,12 +120,13 @@ console.log('Calling sumAll with array1 (a1) from before:', sumAll(a1));
 // 10. Function to return a new array of all positive (greater than zero)
 //     numbers contained in an input array. If there are no positive numbers
 //     return an empty array. Note: The input array should not change.
+
 let a3 = [1,-2,3,-4,5,-6];
 let a4 = [-1,-2,-3,-4,-5,-6];
 
 function positiveElements(array) {
   let positiveArray = [];
-  for (element of array){
+  for (let element of array){
     if (element>0){
       positiveArray.push(element);
     }
@@ -145,7 +160,7 @@ const tetrahedralNumber = n => {
     for (let l=h; l>0; l--){
   //    console.log('in loop 2', l);
   // Used these bits of commented out code to test that the loops were behaving as expected.
-      t=t+l;
+      t+=l;
     }
   }
   return t;
@@ -165,7 +180,7 @@ console.log('Testing tetrahedralNumber with 6, should be 56:', tetrahedralNumber
 
 // ATTEMPT 1
 // function getLength(nestedArray) {
-//   for (part of nestedArray) {
+//   for (let part of nestedArray) {
 //     console.log(part);
 //     if (part.length !== undefined){
 //       return 1;
@@ -183,7 +198,7 @@ console.log('Testing tetrahedralNumber with 6, should be 56:', tetrahedralNumber
 //     return 0;
 //   }
 //
-//   for (part of nestedArray){
+//   for (let part of nestedArray){
 //     console.log('current part:', part, 'current length:', length);
 //     if (part.length !== undefined){
 //       return getLengthgetLength(part,length);
@@ -200,7 +215,7 @@ console.log('Testing tetrahedralNumber with 6, should be 56:', tetrahedralNumber
 // FAILED ATTEMPT 3
 // let length = 0;
 // function getLength(nestedArray, length) {
-//   for (part of nestedArray){
+//   for (let part of nestedArray){
 //     console.log('current part:',part, 'current length', length);
 //     if (part.length !== undefined){
 //       console.log('running recursion with part', part, 'and current length', length);
@@ -214,7 +229,7 @@ console.log('Testing tetrahedralNumber with 6, should be 56:', tetrahedralNumber
 
 function getLength(nestedArray) {
   let length = 0;
-  for (part of nestedArray){
+  for (let part of nestedArray){
     if (part.length !== undefined){
       length += getLength(part);
     } else{
